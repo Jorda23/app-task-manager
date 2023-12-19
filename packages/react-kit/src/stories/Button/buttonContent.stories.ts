@@ -1,38 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ButtonExample } from './ButtonExample';
+import { CustomButton } from '../../components/Button';
 
 const meta = {
   title: 'Components/Button',
-  component: ButtonExample,
+  component: CustomButton,
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof ButtonExample>;
+} satisfies Meta<typeof CustomButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const content: Story = {
   args: {
-    sizeName: 'md',
-    warning: false,
-    label: 'Button',
-    isDisabled: false,
-    variant: 'primary',
-    formats: 'fixed',
-    isLoading: false,
+    disabled: false,
+    label: "Add"
   },
-  argTypes: {
-    isSelected: { table: { disable: true } },
-    sizeName: {
+  argTypes : {
+    onClick: { table: { disable: true } },
+    type: {
       control: { type: 'select' },
     },
-    variant: {
-      control: { type: 'select' },
-    },
-    formats: {
-      control: { type: 'select' },
-    },
-  },
+  }
 };
