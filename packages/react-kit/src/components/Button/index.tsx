@@ -48,16 +48,12 @@ const StyledButton = styled(Button)<{ type: ButtonType }>`
   }
 
   /* Disabled styles */
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      color: grey;
-      background-color: lightGrey;
-      cursor: not-allowed;
-      &:hover {
-        background-color: lightGrey;
-      }
-    `}
+ &&[disabled] {
+    color: grey;
+    background-color: lightGrey;
+    cursor: not-allowed;
+    pointer-events: auto;
+  }
 `;
 
 interface Props {

@@ -2,8 +2,8 @@ import { CustomIcoButton } from '@ReactTask/react-kit';
 import { Box, Stack, Typography } from '@mui/material';
 
 import { AiOutlineDropbox } from 'react-icons/ai';
+import Layout from 'src/components/Layout';
 import Navbar from 'src/components/Navbar';
-import Layout from './Layout';
 
 const Tasks = () => {
   return (
@@ -54,9 +54,6 @@ const Tasks = () => {
             <CustomIcoButton icon="IconPlus" />
           </Box>
 
-          {/* <CustomButton label={'Tasks'} onClick={handleNavigate} />
-
-  <CustomButton label={'List'} /> */}
         </Stack>
       </Box>
     </Layout>

@@ -2,7 +2,7 @@ import { CustomButton } from '@ReactTask/react-kit';
 import { Box, Stack } from '@mui/material';
 import { GrTask } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
-import Layout from './Layout';
+import Layout from 'src/components/Layout';
 
 const ControllerTasksLists = () => {
   const navigate = useNavigate();

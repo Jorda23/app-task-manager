@@ -1,4 +1,3 @@
-/// <reference types="vitest" />
 /// <reference types="vite/client" />
 
 import react from '@vitejs/plugin-react';
@@ -7,6 +6,7 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 // import { nodeResolve } from '@rollup/plugin-node-resolve';
+import Checker from 'vite-plugin-checker';
 
 export default defineConfig({
   plugins: [
@@ -15,11 +15,9 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
     }),
+    Checker({ typescript: true }), // Agrega el plugin Checker para TypeScript
+
   ],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-  },
   server: {
     watch: {
       usePolling: true,
