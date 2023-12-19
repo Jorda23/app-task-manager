@@ -3,7 +3,7 @@ import {
   CustomIcoButton,
   CustomModal,
   CustomButton,
-  InputText
+  InputText,
 } from '@ReactTask/react-kit';
 import { Box, Typography } from '@mui/material';
 import { useTaskActions } from 'src/hook/useTaskActions';
@@ -27,7 +27,7 @@ export const CreateNewTask = () => {
 
   const handleTaskNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTaskName(event.target.value);
-    setError(''); 
+    setError('');
   };
 
   const handleAddTask = () => {
@@ -44,11 +44,14 @@ export const CreateNewTask = () => {
     <>
       <Box
         sx={{
-          width: '100%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '40px',
+          position: 'fixed',
+          marginRight: '20px',
+          marginBottom: '30px',
+          right: 0,
+          bottom: 0,
         }}
       >
         <CustomIcoButton icon="IconPlus" handleAdd={handleOpen} />
@@ -62,7 +65,7 @@ export const CreateNewTask = () => {
           value={taskName}
           onChange={handleTaskNameChange}
         />
-      
+
         <Box
           sx={{
             display: 'flex',

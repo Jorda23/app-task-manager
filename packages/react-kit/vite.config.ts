@@ -16,12 +16,15 @@ export default defineConfig({
       insertTypesEntry: true,
     }),
     Checker({ typescript: true }), // Agrega el plugin Checker para TypeScript
-
+ 
   ],
   server: {
     watch: {
       usePolling: true,
     },
+  },
+  optimizeDeps: {
+    include: ['@testing-library/react', 'react', 'react-dom'],
   },
   build: {
     sourcemap: true,

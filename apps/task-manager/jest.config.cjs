@@ -13,8 +13,4 @@ module.exports = {
       statements: 70,
     },
   },
-  moduleNameMapper: {
-    "\\.svg$": "<rootDir>src/assets/customicons"
-  },  
-  collectCoverageFrom: ['src/components/**/*.{ts,tsx}', '!**/__tests__/**'],
 };

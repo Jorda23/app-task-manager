@@ -35,20 +35,19 @@ const Tasks = () => {
           direction="column"
           justifyContent={'center'}
           sx={{
-            width: '30%',
+            width: '100%',
             height: '100%',
             gap: '20px',
             padding: '20px',
           }}
         >
           <Box
-            sx={{
+             sx={{
               width: '100%',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              flexDirection: 'column',
-              marginBottom: '20px',
+              marginTop: '60px',
             }}
           >
             {tasks.length === 0 ? (

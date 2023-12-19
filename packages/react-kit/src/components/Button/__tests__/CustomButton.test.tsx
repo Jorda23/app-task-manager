@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { CustomButton } from '../../components/Button'; // Make sure to have the correct path
+import { CustomButton } from '../index'; // Make sure to have the correct path
 
 describe('CustomButton', () => {
   it('renders the provided label', () => {

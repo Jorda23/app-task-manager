@@ -17,15 +17,12 @@ const StyledButton = styled(IconButton)`
   }
 
   /* Disabled styles */
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      && {
-        color: grey;
-        background-color: lightGrey;
-        cursor: not-allowed;
-      }
-    `}
+  &.css-78trlr-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+    background-color: lightGrey;
+    cursor: not-allowed;
+    pointer-events: auto;
+  }
 `;
 
 interface Props {

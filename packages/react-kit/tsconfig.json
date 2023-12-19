@@ -21,6 +21,6 @@
     },
     "types": ["jest", "@testing-library/jest-dom"],
   },
-  "include": ["src/**/*.test.tsx"],
+  "include": ["src/**/*.test.tsx", "src/components/CustomAvatar/__tests__/CustomAvatar.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
