@@ -12,7 +12,7 @@ const Navbar = (props: Props) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate('/task-list');
+    navigate('/home');
   };
 
   return (

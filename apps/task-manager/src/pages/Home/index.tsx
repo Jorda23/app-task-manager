@@ -4,7 +4,7 @@ import { GrTask } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 import Layout from 'src/components/Layout';
 
-const ControllerTasksLists = () => {
+const Home = () => {
   const navigate = useNavigate();
 
   const handleNavigation = (path: string) => () => {
@@ -52,4 +52,4 @@ const ControllerTasksLists = () => {
   );
 };
 
-export default ControllerTasksLists;
+export default Home;

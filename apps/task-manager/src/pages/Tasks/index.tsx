@@ -1,11 +1,24 @@
-import { CustomIcoButton } from '@ReactTask/react-kit';
-import { Box, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 import { AiOutlineDropbox } from 'react-icons/ai';
 import Layout from 'src/components/Layout';
 import Navbar from 'src/components/Navbar';
+import React from 'react';
+import { CreateNewTask } from './components/CreateNewTask';
+import { useAppSelector } from 'src/hook/store';
+import { TaskWithId } from 'src/store/tasks/slice';
 
 const Tasks = () => {
+  const tasks = useAppSelector((state) => state.tasks);
+
   return (
     <Layout>
       <Navbar title={'Tasks'} />
@@ -38,22 +51,35 @@ const Tasks = () => {
               marginBottom: '20px',
             }}
           >
-            <AiOutlineDropbox fontSize={'100px'} />{' '}
-            <Typography variant="h6">There are no tasks yet</Typography>
+            {tasks.length === 0 ? (
+              <>
+                <AiOutlineDropbox fontSize={'100px'} />
+                <Typography variant="h6">There are no tasks yet</Typography>
+              </>
+            ) : (
+              <List
+                sx={{
+                  width: '100%',
+                  maxWidth: 360,
+                  bgcolor: 'background.paper',
+                }}
+              >
+                {tasks.map((value: TaskWithId) => {
+                  const labelId = `checkbox-list-label-${value}`;
+
+                  return (
+                    <ListItem key={value.id} disablePadding>
+                      <ListItemButton role={undefined} dense>
+                        <ListItemText id={labelId} primary={`${value.name}`} />
+                      </ListItemButton>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            )}
           </Box>
 
-          <Box
-            sx={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: '40px',
-            }}
-          >
-            <CustomIcoButton icon="IconPlus" />
-          </Box>
-
+          <CreateNewTask />
         </Stack>
       </Box>
     </Layout>

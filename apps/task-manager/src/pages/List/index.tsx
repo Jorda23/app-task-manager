@@ -5,12 +5,13 @@ import {
   List,
   ListItemButton,
   ListItemAvatar,
-  Avatar,
   ListItemText,
 } from '@mui/material';
 import Layout from 'src/components/Layout';
+import { Loading } from 'src/components/Loading';
 import Navbar from 'src/components/Navbar';
 import { useGetElementsQuery } from 'src/services/ElementList.services';
+import { CustomAvatar } from '@ReactTask/react-kit';
 
 interface User {
   createdAt: string;
@@ -23,11 +24,11 @@ const ListManager = () => {
   const { data: elements, error, isLoading } = useGetElementsQuery();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>An unexpected error occurred.</div>;
   }
 
   if (!elements) {
@@ -73,7 +74,10 @@ const ListManager = () => {
                 <ListItem key={element.id} disablePadding>
                   <ListItemButton>
                     <ListItemAvatar>
-                      <Avatar alt={`Avatar`} src={`${element.avatar}`} />
+                      <CustomAvatar
+                        name={element.name}
+                        srcImage={element.avatar}
+                      />
                     </ListItemAvatar>
                     <ListItemText id={element.id} primary={`${element.name}`} />
                   </ListItemButton>

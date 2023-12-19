@@ -7,6 +7,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     getElements: builder.query<any, void>({
       query: () => 'elements',
+      keepUnusedDataFor: 0, // Establece a 0 para deshabilitar el caché
     }),
   }),
 });
