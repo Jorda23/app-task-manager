@@ -25,10 +25,19 @@ const Home = () => {
           direction="column"
           justifyContent={'center'}
           sx={{
-            width: '30%',
-            height: '100%',
+            width: {
+              xs: '60%',
+              sm: '30%',
+              md: '30%',
+              lg: '30%',
+              xl: '30%',
+            },
+            height: '40%',
             gap: '20px',
-            padding: '20px',
+            padding: '40px',
+            borderRadius: '8px',
+            background: 'white',
+            boxShadow: 5,
           }}
         >
           <Box

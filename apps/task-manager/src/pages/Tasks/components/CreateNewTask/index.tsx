@@ -5,7 +5,7 @@ import {
   CustomButton,
   InputText,
 } from '@ReactTask/react-kit';
-import { Box, Typography } from '@mui/material';
+import { Box, Tooltip, Typography } from '@mui/material';
 import { useTaskActions } from 'src/hook/useTaskActions';
 
 export const CreateNewTask = () => {
@@ -54,7 +54,15 @@ export const CreateNewTask = () => {
           bottom: 0,
         }}
       >
-        <CustomIcoButton icon="IconPlus" handleAdd={handleOpen} />
+        <Tooltip title="Add Task" arrow>
+          <div>
+            <CustomIcoButton
+              icon="IconPlus"
+              type="success"
+              onClick={handleOpen}
+            />
+          </div>
+        </Tooltip>
       </Box>
 
       <CustomModal isOpen={isOpen} handleClose={handleClose}>

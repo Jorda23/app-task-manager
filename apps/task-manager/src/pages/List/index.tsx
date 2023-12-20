@@ -51,7 +51,7 @@ const ListManager = () => {
           direction="column"
           justifyContent={'center'}
           sx={{
-            width: '30%',
+            width: '100%',
             height: '100%',
             gap: '20px',
             padding: '20px',
@@ -63,12 +63,13 @@ const ListManager = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              marginTop: '60px',
+              marginTop: '100px',
+            
             }}
           >
             <List
               dense
-              sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+              sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}
             >
               {elements.map((element: User) => (
                 <ListItem key={element.id} disablePadding>

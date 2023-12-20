@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-const PathStudio = lazy(() => import('src/pages/Home'));
+const Home = lazy(() => import('src/pages/Home'));
 const Tasks = lazy(() => import('src/pages/Tasks'));
 const List = lazy(() => import('src/pages/List'));
 
@@ -9,10 +9,19 @@ export const ManagerRoutes = () => {
   return (
     <Routes>
       <Route
+        path="/"
+        element={
+          <Suspense fallback={<div></div>}>
+            <Home />
+          </Suspense>
+        }
+      />
+
+      <Route
         path="/home"
         element={
           <Suspense fallback={<div></div>}>
-            <PathStudio />
+            <Home />
           </Suspense>
         }
       />

@@ -1,12 +1,14 @@
 // CustomIcoButton.test.tsx
 import React from 'react';
-import { render, screen, fireEvent, prettyDOM } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CustomIcoButton } from '../index';
 
 describe('CustomIcoButton', () => {
   test('renders CustomIcoButton with disabled styles when disabled', () => {
-    render(<CustomIcoButton icon="IconAtom" disabled={true} />);
+    render(
+      <CustomIcoButton type={'success'} icon="IconAtom" disabled={true} />
+    );
 
     const button = screen.getByLabelText('AddTask');
 
@@ -19,7 +21,13 @@ describe('CustomIcoButton', () => {
 
   test('calls handleAdd callback on button click', () => {
     const handleAddMock = jest.fn();
-    render(<CustomIcoButton icon="IconAtom" handleAdd={handleAddMock} />);
+    render(
+      <CustomIcoButton
+        icon="IconAtom"
+        onClick={handleAddMock}
+        type={'success'}
+      />
+    );
 
     const button = screen.getByLabelText('AddTask');
 

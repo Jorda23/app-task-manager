@@ -19,5 +19,6 @@ export const content: Story = {
     error: ""
   },
   argTypes: {
+    onChange: { table: { disable: true } },
   },
 };

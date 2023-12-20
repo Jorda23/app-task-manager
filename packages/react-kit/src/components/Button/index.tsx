@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Button from '@mui/material/Button'; 
+import Button from '@mui/material/Button';
 
-type ButtonType = 'success' | 'danger' | 'default'; // Include 'default' in ButtonType
+type ButtonType = 'success' | 'danger' | 'default';
 
 const getButtonStyles = (type: ButtonType) => {
   switch (type) {
@@ -18,8 +18,7 @@ const getButtonStyles = (type: ButtonType) => {
     case 'danger':
       return css`
         color: white;
-
-        background-color: crimson;
+        background-color: #941a10;
         &:hover {
           background-color: darkRed;
         }
@@ -48,7 +47,7 @@ const StyledButton = styled(Button)<{ type: ButtonType }>`
   }
 
   /* Disabled styles */
- &&[disabled] {
+  &&[disabled] {
     color: grey;
     background-color: lightGrey;
     cursor: not-allowed;

@@ -17,8 +17,12 @@ export const content: Story = {
   args: {
     icon: 'IconAudio',
     disabled: false,
+    type: "success" 
   },
   argTypes: {
     handleAdd: { table: { disable: true } },
+    type: {
+      control: { type: 'select' },
+    },
   },
 };

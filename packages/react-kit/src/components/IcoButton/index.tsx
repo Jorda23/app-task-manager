@@ -3,18 +3,44 @@ import styled, { css } from 'styled-components';
 import { IconButton, SvgIcon } from '@mui/material';
 import { IconsTypes, types } from '../../shared/iconsTypes/icons';
 
-const StyledButton = styled(IconButton)`
+type IconButtonType = 'success' | 'danger' | 'default'; 
+
+const getIconButtonStyles = (type: IconButtonType) => {
+  switch (type) {
+    case 'success':
+      return css`
+        color: white;
+        background-color: blue;
+        &:hover {
+          background-color: darkBlue;
+        }
+      `;
+    case 'danger':
+      return css`
+        color: white;
+        background-color: #941a10;
+        &:hover {
+          background-color: darkRed;
+        }
+      `;
+    default:
+      return css`
+        color: white;
+
+        background-color: grey;
+        &:hover {
+          background-color: darkGrey;
+        }
+      `;
+  }
+};
+
+const StyledButton = styled(IconButton)<{ type: IconButtonType }>`
   /* Base styles */
   && {
-    color: white;
-    background-color: blue;
+    ${({ type }) => getIconButtonStyles(type)}
   }
 
-  /* Hover styles */
-  &&:hover {
-    color: white;
-    background-color: darkBlue;
-  }
 
   /* Disabled styles */
   &.css-78trlr-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
@@ -27,19 +53,21 @@ const StyledButton = styled(IconButton)`
 
 interface Props {
   disabled?: boolean;
-  handleAdd?: () => void;
+  onClick?: () => void;
   icon: types;
+  type: IconButtonType;
 }
 
 export const CustomIcoButton: React.FC<Props> = ({
   disabled,
-  handleAdd,
+  onClick,
   icon,
+  type
 }) => {
   const iconSelected = IconsTypes.find((x) => x.type === icon);
 
   return (
-    <StyledButton aria-label="AddTask" disabled={disabled} onClick={handleAdd}>
+    <StyledButton aria-label="AddTask" type={type} disabled={disabled} onClick={onClick}>
       {iconSelected && iconSelected.icon && (
         <SvgIcon component={iconSelected.icon} />
       )}

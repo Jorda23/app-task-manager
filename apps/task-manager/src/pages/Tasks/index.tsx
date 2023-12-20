@@ -1,20 +1,11 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
-import { AiOutlineDropbox } from 'react-icons/ai';
 import Layout from 'src/components/Layout';
 import Navbar from 'src/components/Navbar';
-import React from 'react';
 import { CreateNewTask } from './components/CreateNewTask';
 import { useAppSelector } from 'src/hook/store';
-import { TaskWithId } from 'src/store/tasks/slice';
+import { EmptyTaskMessage } from './components/EmptyTaskMessage';
+import { TaskList } from './components/TaskList';
 
 const Tasks = () => {
   const tasks = useAppSelector((state) => state.tasks);
@@ -42,7 +33,7 @@ const Tasks = () => {
           }}
         >
           <Box
-             sx={{
+            sx={{
               width: '100%',
               display: 'flex',
               justifyContent: 'center',
@@ -50,32 +41,7 @@ const Tasks = () => {
               marginTop: '60px',
             }}
           >
-            {tasks.length === 0 ? (
-              <>
-                <AiOutlineDropbox fontSize={'100px'} />
-                <Typography variant="h6">There are no tasks yet</Typography>
-              </>
-            ) : (
-              <List
-                sx={{
-                  width: '100%',
-                  maxWidth: 360,
-                  bgcolor: 'background.paper',
-                }}
-              >
-                {tasks.map((value: TaskWithId) => {
-                  const labelId = `checkbox-list-label-${value}`;
-
-                  return (
-                    <ListItem key={value.id} disablePadding>
-                      <ListItemButton role={undefined} dense>
-                        <ListItemText id={labelId} primary={`${value.name}`} />
-                      </ListItemButton>
-                    </ListItem>
-                  );
-                })}
-              </List>
-            )}
+            {tasks.length === 0 ? <EmptyTaskMessage /> : <TaskList />}
           </Box>
 
           <CreateNewTask />

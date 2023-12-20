@@ -7,7 +7,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: {
+    xs: '80%',
+    sm: '70%',
+    md: 400,
+    lg: 400,
+  },
   bgcolor: 'white',
   boxShadow: 24,
   pt: 2,

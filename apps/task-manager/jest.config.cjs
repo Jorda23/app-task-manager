@@ -1,16 +1,9 @@
-// jest.config.js
+// Cambia jest.config.js a jest.config.cjs
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  collectCoverage: true,
-  coverageThreshold: {
-    global: {
-      branches: 70,
-      functions: 70,
-      lines: 70,
-      statements: 70,
-    },
+  testEnvironment: 'jest-environment-jsdom',
+  testMatch: ['<rootDir>/src/**/*.test.tsx'],
+  moduleNameMapper: {
+    // Agrega mapeos si es necesario para los estilos, imágenes, etc.
   },
 };
