@@ -2,6 +2,13 @@
 
 This project is built with a variety of modern web development technologies, focusing on React and TypeScript.
 
+## 🌐 Live Demo
+
+Visit the live demo of the Task Manager:
+
+[![Netlify Logo](https://www.netlify.com/img/global/badges/netlify-color-bg.svg)](https://task-manager-monorepo.netlify.app/)
+
+
 ## 📚 Libraries
 
 - **UI**: Material-UI

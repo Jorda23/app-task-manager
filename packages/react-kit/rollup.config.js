@@ -1,29 +1,29 @@
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
-import typescript from "rollup-plugin-typescript2";
-import svg from 'rollup-plugin-svg'
-import svgr from '@svgr/rollup'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import { terser } from 'rollup-plugin-terser';
+import typescript from 'rollup-plugin-typescript2';
+import svg from 'rollup-plugin-svg';
+import svgr from '@svgr/rollup';
 
 export default {
   //entry point
-  input: "src/index.tsx",
+  input: 'src/index.tsx',
   preserveModules: true,
 
   //output directory
   output: [
     {
-      dir: "./dist/cjs/",
-      format: "cjs",
+      dir: './dist/cjs/',
+      format: 'cjs',
       sourcemap: true,
-      exports: "auto",
+      exports: 'auto',
     },
     {
-      dir: "./dist/esm/",
-      format: "esm",
+      dir: './dist/esm/',
+      format: 'esm',
       sourcemap: true,
-      exports: "auto",
+      exports: 'auto',
     },
   ],
 

@@ -6,7 +6,7 @@
     "allowJs": false,
     "skipLibCheck": true,
     "jsx": "react-jsx",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,8 +19,8 @@
     "paths": {
       "src/*": ["src/*"]
     },
-    "types": ["jest", "@testing-library/jest-dom"],
+    "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*.test.tsx", "src/components/CustomAvatar/__tests__/CustomAvatar.tsx"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

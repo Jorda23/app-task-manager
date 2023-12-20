@@ -8,14 +8,8 @@ import '@fontsource/roboto/900.css';
 
 import { CustomIcoButton } from './components/IcoButton';
 import { CustomButton } from './components/Button';
-import { CustomModal } from "./components/Modal"
-import { InputText } from "./components/InputText"
-import { CustomAvatar } from "./components/CustomAvatar"
+import { CustomModal } from './components/Modal';
+import { InputText } from './components/InputText';
+import { CustomAvatar } from './components/CustomAvatar';
 
-export {
-  CustomIcoButton,
-  CustomButton,
-  CustomModal,
-  InputText,
-  CustomAvatar
-};
+export { CustomIcoButton, CustomButton, CustomModal, InputText, CustomAvatar };

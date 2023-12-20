@@ -6,7 +6,6 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 // import { nodeResolve } from '@rollup/plugin-node-resolve';
-import Checker from 'vite-plugin-checker';
 
 export default defineConfig({
   plugins: [
@@ -14,10 +13,13 @@ export default defineConfig({
     svgr(),
     dts({
       insertTypesEntry: true,
-    }),
-    Checker({ typescript: true }), // Agrega el plugin Checker para TypeScript
- 
+    }), 
   ],
+  resolve: {
+    alias: {
+      src: '/src',
+    },
+  },
   server: {
     watch: {
       usePolling: true,

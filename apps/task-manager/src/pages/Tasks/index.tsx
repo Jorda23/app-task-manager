@@ -2,7 +2,7 @@ import { Box, Stack } from '@mui/material';
 
 import Layout from 'src/components/Layout';
 import Navbar from 'src/components/Navbar';
-import { CreateNewTask } from './components/CreateNewTask';
+import { CreateNewTask } from 'src/components/CreateNewTask';
 import { useAppSelector } from 'src/hook/store';
 import { EmptyTaskMessage } from './components/EmptyTaskMessage';
 import { TaskList } from './components/TaskList';
