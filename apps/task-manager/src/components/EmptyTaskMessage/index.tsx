@@ -1,5 +1,5 @@
-import { Typography } from '@mui/material';
 import React from 'react';
+import { Typography } from '@mui/material';
 import { AiOutlineDropbox } from 'react-icons/ai';
 
 export const EmptyTaskMessage = () => {

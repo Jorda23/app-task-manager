@@ -4,8 +4,8 @@ import Layout from 'src/components/Layout';
 import Navbar from 'src/components/Navbar';
 import { CreateNewTask } from 'src/components/CreateNewTask';
 import { useAppSelector } from 'src/hook/store';
-import { EmptyTaskMessage } from './components/EmptyTaskMessage';
-import { TaskList } from './components/TaskList';
+import { EmptyTaskMessage } from 'src/components/EmptyTaskMessage';
+import { TaskList } from 'src/components/TaskList';
 
 const Tasks = () => {
   const tasks = useAppSelector((state) => state.tasks);

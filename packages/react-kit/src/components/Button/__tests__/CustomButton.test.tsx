@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { CustomButton } from '../index'; // Make sure to have the correct path
 
 describe('CustomButton', () => {
-  it('renders the provided label', () => {
+  test('renders the provided label', () => {
     const label = 'Add';
     render(<CustomButton label={label} />);
 
@@ -12,6 +12,20 @@ describe('CustomButton', () => {
     expect(button).toBeInTheDocument();
   });
 
+  test('renders the type success', () => {
+    const { getByText } = render(<CustomButton label="Success" type="success" />);
+    const button = getByText('Success');
+
+    expect(button).toBeInTheDocument();
+  }); 
+
+  test('renders the type danger', () => {
+    const { getByText } = render(<CustomButton label="Danger" type="danger" />);
+    const button = getByText('Danger');
+
+    expect(button).toBeInTheDocument();
+  }); 
+
   test('renders disabled button', () => {
     render(<CustomButton label="Add" disabled />);
 
@@ -19,7 +33,7 @@ describe('CustomButton', () => {
 
     // Verify that the button has been rendered with the disabled button style
     expect(button).toHaveStyle(`
-        cursor: default;
+        cursor: not-allowed;
     `);
 
     // Verify that the button is disabled

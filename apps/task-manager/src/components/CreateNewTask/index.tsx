@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import {
   CustomIcoButton,
   CustomModal,
@@ -11,10 +11,10 @@ import { useTaskActions } from 'src/hook/useTaskActions';
 export const CreateNewTask = () => {
   const { addTask } = useTaskActions();
 
-  const [taskName, setTaskName] = React.useState('');
-  const [error, setError] = React.useState('');
+  const [taskName, setTaskName] = useState<string>('');
+  const [error, setError] = useState<string>('');
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
     setIsOpen(true);

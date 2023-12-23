@@ -14,7 +14,7 @@ module.exports = {
     },
   },
   "moduleNameMapper": {
-    "^src/(.*)$": "<rootDir>/src/$1"
+    "^src/(.*)$": "<rootDir>/src/$1",
   },  
   collectCoverageFrom: ['src/components/**/*.{ts,tsx}', '!**/__tests__/**'],
 };

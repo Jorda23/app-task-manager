@@ -1,13 +1,11 @@
-import { List, ListItem, ListItemText, Tooltip } from '@mui/material';
+import { List, ListItem, ListItemText } from '@mui/material';
 import React from 'react';
 import { useAppSelector } from 'src/hook/store';
-import { useTaskActions } from 'src/hook/useTaskActions';
 import { TaskWithId } from 'src/store/tasks/slice';
 import { DeleteTask } from '../DeleteTask';
 
 export const TaskList = () => {
   const tasks = useAppSelector((state) => state.tasks);
-  const { removeTask } = useTaskActions();
   
   return (
     <List

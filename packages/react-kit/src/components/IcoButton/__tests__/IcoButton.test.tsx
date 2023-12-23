@@ -37,4 +37,24 @@ describe('CustomIcoButton', () => {
     // Ensure handleAdd callback is called
     expect(handleAddMock).toHaveBeenCalledTimes(1);
   });
+
+  test('renders the type danger', () => {
+    const { getByLabelText } = render(
+      <CustomIcoButton icon="IconAtom" type={'danger'} />
+    );
+
+    const button = getByLabelText('AddTask');
+
+    expect(button).toBeInTheDocument();
+  });
+
+  test('renders the type default', () => {
+    const { getByLabelText } = render(
+      <CustomIcoButton icon="IconAudio" type={'default'} />
+    );
+
+    const button = getByLabelText('AddTask');
+
+    expect(button).toBeInTheDocument();
+  });
 });

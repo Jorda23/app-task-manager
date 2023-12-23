@@ -1,4 +1,5 @@
-import { createSlice, Slice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 export type TaskId = string;
 
@@ -15,21 +16,12 @@ const initialState: TaskWithId[] = (() => {
   return persistedState ? JSON.parse(persistedState).tasks : [];
 })();
 
-const taskSlice: Slice<
-  TaskWithId[],
-  {
-    addNewTask: (state: TaskWithId[], action: PayloadAction<Task>) => void;
-    deleteTaskById: (
-      state: TaskWithId[],
-      action: PayloadAction<TaskId>
-    ) => TaskWithId[];
-  }
-> = createSlice({
+const taskSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
     addNewTask: (state, action: PayloadAction<Task>) => {
-      const id = crypto.randomUUID();
+      const id = uuidv4();
       state.push({ id, ...action.payload });
     },
     deleteTaskById: (state, action: PayloadAction<TaskId>) => {

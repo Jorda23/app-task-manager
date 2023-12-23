@@ -25,4 +25,15 @@ describe('CustomAvatar', () => {
 
     expect(screen.getByTestId('loading-skeleton')).toBeInTheDocument();
   });
+
+  test('renders CustomAvatar component with image error', async () => {
+    render(
+      <CustomAvatar
+        name="John Doe"
+        srcImage="dfhlkjdshfkljhsdkjlfhlkjsd"
+      />
+    );
+
+    expect(screen.getByTestId('loading-skeleton')).toBeInTheDocument();
+  });
 });
