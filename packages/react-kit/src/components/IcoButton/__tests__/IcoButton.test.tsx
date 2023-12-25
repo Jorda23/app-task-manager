@@ -7,10 +7,15 @@ import { CustomIcoButton } from '../index';
 describe('CustomIcoButton', () => {
   test('renders CustomIcoButton with disabled styles when disabled', () => {
     render(
-      <CustomIcoButton type={'success'} icon="IconAtom" disabled={true} />
+      <CustomIcoButton
+        type={'success'}
+        icon="IconAtom"
+        disabled={true}
+        ariaLabel={'IconButtonAction'}
+      />
     );
 
-    const button = screen.getByLabelText('AddTask');
+    const button = screen.getByLabelText('IconButtonAction');
 
     // Ensure disabled styles are applied
     expect(button).toHaveStyle({
@@ -26,10 +31,11 @@ describe('CustomIcoButton', () => {
         icon="IconAtom"
         onClick={handleAddMock}
         type={'success'}
+        ariaLabel={'IconButtonAction'}
       />
     );
 
-    const button = screen.getByLabelText('AddTask');
+    const button = screen.getByLabelText('IconButtonAction');
 
     // Trigger button click
     fireEvent.click(button);
@@ -40,20 +46,20 @@ describe('CustomIcoButton', () => {
 
   test('renders the type danger', () => {
     const { getByLabelText } = render(
-      <CustomIcoButton icon="IconAtom" type={'danger'} />
+      <CustomIcoButton icon="IconAtom" type={'danger'} ariaLabel={'IconButtonAction'} />
     );
 
-    const button = getByLabelText('AddTask');
+    const button = getByLabelText('IconButtonAction');
 
     expect(button).toBeInTheDocument();
   });
 
   test('renders the type default', () => {
     const { getByLabelText } = render(
-      <CustomIcoButton icon="IconAudio" type={'default'} />
+      <CustomIcoButton icon="IconAudio" type={'default'} ariaLabel={'IconButtonAction'} />
     );
 
-    const button = getByLabelText('AddTask');
+    const button = getByLabelText('IconButtonAction');
 
     expect(button).toBeInTheDocument();
   });

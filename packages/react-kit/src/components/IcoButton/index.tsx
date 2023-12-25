@@ -56,18 +56,20 @@ interface Props {
   onClick?: () => void;
   icon: types;
   type: IconButtonType;
+  ariaLabel: string;
 }
 
 export const CustomIcoButton: React.FC<Props> = ({
   disabled,
   onClick,
   icon,
-  type
+  type,
+  ariaLabel
 }) => {
   const iconSelected = IconsTypes.find((x) => x.type === icon);
 
   return (
-    <StyledButton aria-label="AddTask" type={type} disabled={disabled} onClick={onClick}>
+    <StyledButton aria-label={ariaLabel} type={type} disabled={disabled} onClick={onClick}>
       {iconSelected && iconSelected.icon && (
         <SvgIcon component={iconSelected.icon} />
       )}

@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomIcoButton } from '../../components/IcoButton';
 import { types } from '../../shared/iconsTypes/icons';
 
-type IconButtonType = 'success' | 'danger' | 'default'; 
+type IconButtonType = 'success' | 'danger' | 'default';
 
 interface Props {
   disabled?: boolean;
@@ -19,6 +19,7 @@ export const ExampleIcoButton = (props: Props) => {
       icon={icon}
       disabled={disabled}
       type={type}
+      ariaLabel={'buttonActions'}
     ></CustomIcoButton>
   );
 };

@@ -35,6 +35,7 @@ export const CustomModal = (props: Props) => {
       onClose={handleClose}
       aria-labelledby="parent-modal-title"
       aria-describedby="parent-modal-description"
+      data-testid="custom-modal"
     >
       <Box
         sx={{

@@ -1,72 +1,60 @@
-import taskReducer from 'src/store/tasks/slice';
-import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { render, fireEvent, screen, waitFor, within } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { DeleteTask } from '..';
+import { useTaskActions } from 'src/hook/useTaskActions';
 
-type CustomIcoButtonProps = {
-  onClick: () => void; // Define the type for onClick
-};
-
-const CustomIcoButton: React.FC<CustomIcoButtonProps> = ({ onClick }) => (
-  <button onClick={onClick}>Delete Icon</button>
-);
-
-type CustomModalProps = {
-  isOpen: boolean;
-  handleClose: () => void; // Define the type for handleClose
-  children: React.ReactNode;
-};
-
-const CustomModal: React.FC<CustomModalProps> = ({ isOpen, handleClose, children }) => (
-  isOpen ? <div>{children}<button onClick={handleClose}>Close Modal</button></div> : null
-);
-
-type CustomButtonProps = {
-  label: string;
-  onClick: () => void; // Define the type for onClick
-};
-
-const CustomButton: React.FC<CustomButtonProps> = ({ label, onClick }) => (
-  <button onClick={onClick}>{label}</button>
-);
-
-// Mocking necessary hooks and components
 jest.mock('src/hook/useTaskActions', () => ({
   useTaskActions: jest.fn(),
 }));
 
-jest.mock('@ReactTask/react-kit', () => ({
-  CustomIcoButton,
-  CustomModal,
-  CustomButton,
-}));
-
+const mockUseTaskActions = useTaskActions as jest.MockedFunction<
+  typeof useTaskActions
+>;
 
 describe('DeleteTask', () => {
-
   const mockRemoveTask = jest.fn();
-  const taskId = '123';
 
-  it('should handle initial state', () => {
-    expect(taskReducer(undefined, { type: 'unknown' })).toEqual([]);
+  beforeEach(() => {
+    mockUseTaskActions.mockReturnValue({
+      addTask: jest.fn(),
+      removeTask: mockRemoveTask,
+    });
   });
 
-  test('renders delete icon button', () => {
-    expect(screen.getByText('Delete Icon')).toBeInTheDocument();
+  test('renders without crashing', () => {
+    render(<DeleteTask id={'21'} />);
+    expect(screen.getByLabelText('deleteTask')).toBeInTheDocument();
   });
 
-  test('opens modal on delete icon click', () => {
-    fireEvent.click(screen.getByText('Delete Icon'));
+  test('opens modal on button click', () => {
+    render(<DeleteTask id={'21'} />);
+    fireEvent.click(screen.getByLabelText('deleteTask'));
     expect(screen.getByText('Are you sure to delete the task?')).toBeInTheDocument();
   });
 
-  test('closes modal on cancel button click', () => {
-    fireEvent.click(screen.getByText('Delete Icon'));
+  test('closes modal on cancel', async () => {
+    render(<DeleteTask id={'21'} />);
+    fireEvent.click(screen.getByLabelText('deleteTask'));
     fireEvent.click(screen.getByText('Cancel'));
-    expect(screen.queryByText('Are you sure to delete the task?')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText('Are you sure to delete the task?')).not.toBeInTheDocument();
+    });
   });
 
-  test('calls removeTask with correct id on delete button click', () => {
-    fireEvent.click(screen.getByText('Delete Icon'));
-    fireEvent.click(screen.getByText('Delete'));
-    expect(mockRemoveTask).toHaveBeenCalledWith(taskId);
+  test('calls removeTask on delete', async () => {
+    render(<DeleteTask id={'21'} />);
+    fireEvent.click(screen.getByLabelText('deleteTask'));
+  
+    const modal = screen.getByTestId('custom-modal');
+    expect(modal).toBeInTheDocument();
+  
+    // Wait for the delete button to appear and then click it
+    const deleteButton = await within(modal).findByTestId('delete-task-21');
+    fireEvent.click(deleteButton);
+  
+    // Check if removeTask was called with the correct ID
+    expect(mockRemoveTask).toHaveBeenCalledWith('21');
   });
+  
 });

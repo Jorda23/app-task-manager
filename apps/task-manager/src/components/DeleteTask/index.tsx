@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   CustomIcoButton,
   CustomModal,
@@ -11,10 +11,12 @@ interface Props {
   id: string;
 }
 
-export const DeleteTask = ({ id }: Props) => {
+export const DeleteTask = (props: Props) => {
+  const { id } = props;
+
   const { removeTask } = useTaskActions();
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -36,6 +38,7 @@ export const DeleteTask = ({ id }: Props) => {
             icon="IconDelete"
             type="danger"
             onClick={handleOpen}
+            ariaLabel={'deleteTask'}
           />
         </div>
       </Tooltip>
@@ -56,9 +59,11 @@ export const DeleteTask = ({ id }: Props) => {
           }}
         >
           <CustomButton label={'Cancel'} type="default" onClick={handleClose} />
+
           <CustomButton
             label={'Delete'}
             type="danger"
+            dataTestid={`delete-task-${id}`}
             onClick={handleDeleteTask}
           />
         </Box>

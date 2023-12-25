@@ -4,6 +4,8 @@ import { Box, CircularProgress } from '@mui/material';
 export const Loading = () => {
   return (
     <Box
+      data-testid="loading-box"
+
       sx={{
         height: '100vh',
         display: 'flex',
@@ -11,7 +13,7 @@ export const Loading = () => {
         alignItems: 'center',
       }}
     >
-      <CircularProgress />
+      <CircularProgress data-testid="loading-circular-progress" />
     </Box>
   );
 };

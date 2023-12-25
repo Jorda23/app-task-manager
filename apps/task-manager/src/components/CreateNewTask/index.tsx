@@ -60,6 +60,7 @@ export const CreateNewTask = () => {
               icon="IconPlus"
               type="success"
               onClick={handleOpen}
+              ariaLabel={'AddTask'}
             />
           </div>
         </Tooltip>

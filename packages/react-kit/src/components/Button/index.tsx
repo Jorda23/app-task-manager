@@ -60,6 +60,7 @@ interface Props {
   disabled?: boolean;
   onClick?: () => void;
   label: string;
+  dataTestid?: string;
 }
 
 export const CustomButton: React.FC<Props> = ({
@@ -67,9 +68,15 @@ export const CustomButton: React.FC<Props> = ({
   disabled = false,
   onClick,
   label,
+  dataTestid,
 }) => {
   return (
-    <StyledButton disabled={disabled} onClick={onClick} type={type}>
+    <StyledButton
+      disabled={disabled}
+      data-testid={dataTestid}
+      onClick={onClick}
+      type={type}
+    >
       {label}
     </StyledButton>
   );

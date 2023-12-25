@@ -29,7 +29,7 @@ export const TaskList = () => {
           >
             <ListItemText id={labelId} primary={`${value.name}`} />
 
-            <DeleteTask id={value.id} />
+            <DeleteTask id={value.id}    />
           </ListItem>
         );
       })}
