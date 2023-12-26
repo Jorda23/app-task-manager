@@ -4,6 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
+    "types": ["@testing-library/jest-dom"]
   },
   "include": ["vite.config.ts"]
 }
